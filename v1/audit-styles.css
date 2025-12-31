@@ -1,45 +1,56 @@
-/* Основной контейнер таблицы */
+/* Анимация появления (взята основа из вашего файла) */
+@keyframes slideInRow {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Основной контейнер */
 .rng-audit-container.fluffy-theme {
     background: linear-gradient(180deg, #BAE6FD 0%, #FFFFFF 100%) !important;
     border: 3px solid #84cc16 !important;
     padding: 25px !important;
     border-radius: 25px !important;
-    font-family: sans-serif; /* Добавлено для аккуратности */
 }
 
-/* Заголовок */
-.rng-audit-header h2 {
-    font-size: 26px !important;
-    font-weight: 900 !important;
-    color: #0369a1 !important;
-    text-transform: uppercase !important;
-    margin: 0 0 20px 0 !important;
-}
-
-/* Внутренний блок с данными */
+/* Контейнер для строк */
 .rng-math-box {
     background: rgba(255,255,255,0.85) !important;
     border: 2px solid #84cc16 !important;
     padding: 20px !important;
     border-radius: 15px !important;
+    overflow: hidden !important;
 }
 
-/* Строки таблицы */
+/* Стили для строк с анимацией */
 .rng-math-row {
     display: block !important;
     margin-bottom: 15px !important;
     border-bottom: 1px solid #bae6fd !important;
     padding-bottom: 10px !important;
+    
+    /* Применяем анимацию (аналогично .progress-fill из исходника) */
+    animation: slideInRow 0.8s ease-out forwards !important; [cite: 6]
+    opacity: 0; /* Начальное состояние до запуска анимации */
 }
 
-/* Убираем нижнюю линию у последней строки */
+/* Задержка появления для каждой строки (чтобы всплывали по очереди) */
+.rng-math-row:nth-child(1) { animation-delay: 0.1s !important; }
+.rng-math-row:nth-child(2) { animation-delay: 0.3s !important; }
+.rng-math-row:nth-child(3) { animation-delay: 0.5s !important; }
+.rng-math-row:nth-child(4) { animation-delay: 0.7s !important; }
+
 .rng-math-row:last-child {
     border-bottom: none !important;
     margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
 }
 
-/* Метки (Volatility, Dry Spell и т.д.) */
+/* Текстовые стили */
 .rng-math-row div:first-child {
     font-weight: 900 !important;
     font-size: 13px !important;
@@ -48,7 +59,6 @@
     margin-bottom: 4px !important;
 }
 
-/* Значения (High, 48 spins и т.д.) */
 .rng-math-row div:last-child {
     font-weight: 800 !important;
     font-size: 14px !important;
