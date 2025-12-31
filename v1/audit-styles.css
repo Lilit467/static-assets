@@ -1,0 +1,89 @@
+/* 1. Основной контейнер-рамка */
+.rng-audit-container {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #FFFFFF;
+    padding: 25px;
+    border-radius: 30px;
+    border: 1px solid #E2E8F0;
+    color: #0F172A;
+    max-width: 500px;
+    margin: 20px auto;
+    box-sizing: border-box;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Шапка блока */
+.rng-audit-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.rng-audit-badge {
+    display: inline-block;
+    background: #F1F5F9;
+    color: #475569;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.rng-audit-header h2 {
+    margin: 12px 0 0;
+    font-size: 20px;
+    font-weight: 900;
+    color: #1E293B;
+}
+
+/* 3. Математический блок (параметры) */
+.rng-math-box {
+    background: #f8fafc;
+    border: 1px solid #F1F5F9;
+    border-radius: 20px;
+    padding: 18px;
+    margin: 20px 0;
+}
+.rng-math-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+    padding-bottom: 5px;
+}
+.rng-math-row:last-child { border: none; }
+
+/* 4. Заметка аналитика (Autopsy) */
+.rng-autopsy-note {
+    background: #FAFAF9;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px dashed #D6D3D1;
+    position: relative;
+    margin-top: 20px;
+}
+.rng-autopsy-text {
+    margin: 0;
+    font-size: 13px;
+    color: #44403C;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* 5. Легенда для графиков */
+.circle-legend {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* 6. Адаптивность */
+@media (max-width: 480px) {
+    .rng-audit-container { padding: 15px; border-radius: 20px; }
+    .rng-audit-header h2 { font-size: 18px; }
+}
