@@ -182,3 +182,30 @@
     color: #94a3b8;
     font-weight: 600;
 }
+/* Стиль Fluffy (яркий, игровой) */
+.rng-audit-container.fluffy-theme {
+    background: linear-gradient(180deg, #e0f2fe 0%, #ffffff 40%, #f1fcf1 100%);
+    border: 3px solid #84cc16; /* Ярко-зеленый как трава */
+    box-shadow: 0 15px 30px rgba(132, 204, 22, 0.15);
+}
+
+.fluffy-theme .rng-audit-badge {
+    background: #fdf2f8;
+    color: #db2777; /* Розовый под слоника */
+    border: 1px solid #fbcfe8;
+}
+
+.fluffy-theme .rng-audit-header h2 {
+    color: #0369a1; /* Синий как небо */
+    text-shadow: 1px 1px 0px white;
+}
+
+/* Специфический розовый для бонусных столбцов */
+.bar-fluffy-bonus {
+    fill: #ec4899 !important; /* Розовый Pink Elephant */
+}
+
+/* Подсветка для Fluffy темы */
+.fluffy-theme .svg-bar:hover {
+    fill: #a3e635; /* Салатовый при наведении */
+}
