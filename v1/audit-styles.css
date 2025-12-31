@@ -1,356 +1,56 @@
-/* 1. Основной контейнер-рамка */
-.rng-audit-container {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background: #FFFFFF;
-    padding: 25px;
-    border-radius: 30px;
-    border: 1px solid #E2E8F0;
-    color: #0F172A;
-    max-width: 500px;
-    margin: 20px auto;
-    box-sizing: border-box;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-    /* display: none !important; */
-}
-
-/* 2. Шапка блока */
-.rng-audit-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-.rng-audit-badge {
-    display: inline-block;
-    background: #F1F5F9;
-    color: #475569;
-    padding: 4px 12px;
-    border-radius: 8px;
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-.rng-audit-header h2 {
-    margin: 12px 0 0;
-    font-size: 20px;
-    font-weight: 900;
-    color: #1E293B;
-}
-
-/* 3. Математический блок (параметры) */
-.rng-math-box {
-    background: #f8fafc;
-    border: 1px solid #F1F5F9;
-    border-radius: 20px;
-    padding: 18px;
-    margin: 20px 0;
-}
-.rng-math-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    font-size: 13px;
-    border-bottom: 1px solid rgba(0,0,0,0.03);
-    padding-bottom: 5px;
-}
-.rng-math-row:last-child { border: none; }
-
-/* 4. Заметка аналитика (Autopsy) */
-.rng-autopsy-note {
-    background: #FAFAF9;
-    padding: 15px;
-    border-radius: 15px;
-    border: 1px dashed #D6D3D1;
-    position: relative;
-    margin-top: 20px;
-}
-.rng-autopsy-text {
-    margin: 0;
-    font-size: 13px;
-    color: #44403C;
-    font-style: italic;
-    line-height: 1.5;
-}
-
-/* 5. Легенда для графиков */
-.circle-legend {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 10px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-/* 6. Адаптивность */
-@media (max-width: 480px) {
-    .rng-audit-container { padding: 15px; border-radius: 20px; }
-    .rng-audit-header h2 { font-size: 18px; }
-}
-
-/* Столбчатый график */
-.bar-chart-container {
-    padding: 20px;
-    background: #f8fafc;
-    border-radius: 20px;
-    border: 1px solid #f1f5f9;
-    margin: 20px 0;
-}
-
-.bar-chart-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 столбцов */
-    align-items: flex-end; /* Столбцы начинаются снизу */
-    height: 150px; /* Высота графика */
-    gap: 10px;
-    padding-bottom: 20px;
-    position: relative;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-.bar-chart-grid::before { /* Ось Y */
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: #e2e8f0;
-}
-
-.bar-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    position: relative;
-    height: 100%; /* Занимает всю высоту сетки */
-}
-
-.bar-value {
-    font-size: 11px;
-    font-weight: 700;
-    color: #475569;
-    margin-bottom: 5px;
-}
-
-.bar {
-    width: 100%;
-    background: #94a3b8; /* Базовый цвет столбца */
-    border-radius: 4px 4px 0 0;
-    transition: background 0.3s ease-out; /* Плавное изменение цвета */
-    position: relative;
-}
-
-.bar:hover {
-    background: #0284c7; /* Цвет при наведении */
-}
-
-/* Анимация подсветки при загрузке страницы */
-@keyframes bar-fill-animation {
-    from { height: 0; background: #94a3b8; }
-    to { height: var(--bar-height); background: #0284c7; }
-}
-
-.bar.animated {
-    animation: bar-fill-animation 0.8s ease-out forwards;
-    animation-delay: var(--bar-delay); /* Задержка для каждого столбца */
-}
-
-/* Подписи снизу */
-.bar-labels {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
-    font-size: 10px;
-    color: #64748b;
-    font-weight: 600;
-    text-align: center;
-    margin-top: 5px;
-}
-
-/* Ось Y - метки */
-.y-axis-labels {
-    position: absolute;
-    left: -25px; /* Смещение влево от графика */
-    top: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-size: 9px;
-    color: #94a3b8;
-    font-weight: 600;
-}
-/* Стиль Fluffy (яркий, игровой) */
-.rng-audit-container.fluffy-theme {
-    background: linear-gradient(180deg, #e0f2fe 0%, #ffffff 40%, #f1fcf1 100%);
-    border: 3px solid #84cc16; /* Ярко-зеленый как трава */
-    box-shadow: 0 15px 30px rgba(132, 204, 22, 0.15);
-}
-
-.fluffy-theme .rng-audit-badge {
-    background: #fdf2f8;
-    color: #db2777; /* Розовый под слоника */
-    border: 1px solid #fbcfe8;
-}
-
-.fluffy-theme .rng-audit-header h2 {
-    color: #0369a1; /* Синий как небо */
-    text-shadow: 1px 1px 0px white;
-}
-
-/* Специфический розовый для бонусных столбцов */
-.bar-fluffy-bonus {
-    fill: #ec4899 !important; /* Розовый Pink Elephant */
-}
-
-/* Подсветка для Fluffy темы */
-.fluffy-theme .svg-bar:hover {
-    fill: #a3e635; /* Салатовый при наведении */
-}
-
-/* Базовый контейнер темы Fluffy */
+/* Основной контейнер таблицы */
 .rng-audit-container.fluffy-theme {
     background: linear-gradient(180deg, #BAE6FD 0%, #FFFFFF 100%) !important;
     border: 3px solid #84cc16 !important;
     padding: 25px !important;
     border-radius: 25px !important;
-    font-family: 'Inter', sans-serif;
+    font-family: sans-serif; /* Добавлено для аккуратности */
 }
 
 /* Заголовок */
-.fluffy-theme .rng-audit-header h2 {
+.rng-audit-header h2 {
     font-size: 26px !important;
     font-weight: 900 !important;
     color: #0369a1 !important;
     text-transform: uppercase !important;
-    margin: 0 !important;
+    margin: 0 0 20px 0 !important;
 }
 
-/* Внутренний блок таблицы */
-.fluffy-theme .rng-math-box {
-    background: rgba(255, 255, 255, 0.85) !important;
+/* Внутренний блок с данными */
+.rng-math-box {
+    background: rgba(255,255,255,0.85) !important;
     border: 2px solid #84cc16 !important;
     padding: 20px !important;
     border-radius: 15px !important;
-    margin-top: 20px !important;
 }
 
 /* Строки таблицы */
-.fluffy-theme .rng-math-row {
+.rng-math-row {
     display: block !important;
     margin-bottom: 15px !important;
     border-bottom: 1px solid #bae6fd !important;
     padding-bottom: 10px !important;
 }
 
-.fluffy-theme .rng-math-row:last-child {
+/* Убираем нижнюю линию у последней строки */
+.rng-math-row:last-child {
     border-bottom: none !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }
 
-/* Названия метрик */
-.fluffy-theme .metric-name {
+/* Метки (Volatility, Dry Spell и т.д.) */
+.rng-math-row div:first-child {
     font-weight: 900 !important;
     font-size: 13px !important;
     color: #0369a1 !important;
     text-transform: uppercase !important;
     margin-bottom: 4px !important;
-    display: block;
 }
 
-/* Значения метрик (цвета под персонажей) */
-.fluffy-theme .val-high { color: #ea580c !important; font-weight: 800; } /* Оранжевый */
-.fluffy-theme .val-dry { color: #be185d !important; font-weight: 800; }  /* Розовый */
-.fluffy-theme .val-feat { color: #0284c7 !important; font-weight: 800; } /* Голубой */
-.fluffy-theme .val-rtp { color: #16a34a !important; font-weight: 800; }  /* Зеленый */
-
-/* Эффект для всего контейнера */
-.rng-audit-container.fluffy-theme {
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-    cursor: default;
-}
-
-.rng-audit-container.fluffy-theme:hover {
-    transform: translateY(-5px); /* Контейнер слегка приподнимается */
-    box-shadow: 0 20px 40px rgba(132, 204, 22, 0.25) !important;
-}
-
-/* Эффект для строк таблицы */
-.fluffy-theme .rng-math-row {
-    transition: all 0.2s ease !important;
-    position: relative;
-    padding-left: 0;
-}
-
-.fluffy-theme .rng-math-row:hover {
-    background: rgba(255, 255, 255, 0.5); /* Подсветка фона строки */
-    padding-left: 10px; /* Строка плавно сдвигается вправо */
-    border-bottom-color: #ec4899 !important; /* Линия под строкой становится розовой */
-}
-
-/* Спец-эффект для текста внутри строки при наведении */
-.fluffy-theme .rng-math-row:hover .metric-name {
-    color: #ec4899 !important; /* Название метрики розовеет */
-}
-
-.fluffy-theme .rng-math-row:hover [class^="val-"] {
-    filter: brightness(1.2); /* Значение становится чуть ярче */
-}
-
-/* Основной контейнер */
-.rng-audit-container.fluffy-theme {
-    background: linear-gradient(180deg, #BAE6FD 0%, #FFFFFF 100%) !important;
-    border: 3px solid #84cc16 !important;
-    border-radius: 30px !important;
-    padding: 25px !important;
-    transition: transform 0.3s ease !important;
-}
-
-.rng-audit-container.fluffy-theme:hover {
-    transform: translateY(-5px);
-}
-
-/* Сетка с индикаторами (Volatility / RNG) */
-.audit-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.indicator-box {
-    padding: 15px;
-    border-radius: 20px;
-    text-align: center;
-    border: 1px solid rgba(0,0,0,0.05);
-}
-
-.indicator-box.orange { background: #FFF7ED; border-color: #FFEDD5; }
-.indicator-box.blue { background: #F0F9FF; border-color: #E0F2FE; }
-
-.indicator-title { font-size: 10px; font-weight: 900; text-transform: uppercase; margin-bottom: 5px; }
-.indicator-val { font-size: 18px; font-weight: 900; margin-bottom: 8px; }
-
-/* Полоски прогресса */
-.progress-bar { height: 6px; background: rgba(0,0,0,0.05); border-radius: 10px; overflow: hidden; }
-.progress-fill { height: 100%; transition: width 1s ease-in-out; }
-
-/* Кнопка (Drawdown Data) */
-.audit-btn {
-    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
-    color: white !important;
-    padding: 16px;
-    border-radius: 16px;
-    text-align: center;
-    font-weight: 900;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.audit-btn:hover {
-    filter: brightness(1.3);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+/* Значения (High, 48 spins и т.д.) */
+.rng-math-row div:last-child {
+    font-weight: 800 !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
 }
