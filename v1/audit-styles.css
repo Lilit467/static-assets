@@ -10,7 +10,7 @@
     margin: 20px auto;
     box-sizing: border-box;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-    display: none !important;
+    /* display: none !important; */
 }
 
 /* 2. Шапка блока */
