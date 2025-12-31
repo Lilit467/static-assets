@@ -265,3 +265,36 @@
 .fluffy-theme .val-dry { color: #be185d !important; font-weight: 800; }  /* Розовый */
 .fluffy-theme .val-feat { color: #0284c7 !important; font-weight: 800; } /* Голубой */
 .fluffy-theme .val-rtp { color: #16a34a !important; font-weight: 800; }  /* Зеленый */
+
+/* Эффект для всего контейнера */
+.rng-audit-container.fluffy-theme {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    cursor: default;
+}
+
+.rng-audit-container.fluffy-theme:hover {
+    transform: translateY(-5px); /* Контейнер слегка приподнимается */
+    box-shadow: 0 20px 40px rgba(132, 204, 22, 0.25) !important;
+}
+
+/* Эффект для строк таблицы */
+.fluffy-theme .rng-math-row {
+    transition: all 0.2s ease !important;
+    position: relative;
+    padding-left: 0;
+}
+
+.fluffy-theme .rng-math-row:hover {
+    background: rgba(255, 255, 255, 0.5); /* Подсветка фона строки */
+    padding-left: 10px; /* Строка плавно сдвигается вправо */
+    border-bottom-color: #ec4899 !important; /* Линия под строкой становится розовой */
+}
+
+/* Спец-эффект для текста внутри строки при наведении */
+.fluffy-theme .rng-math-row:hover .metric-name {
+    color: #ec4899 !important; /* Название метрики розовеет */
+}
+
+.fluffy-theme .rng-math-row:hover [class^="val-"] {
+    filter: brightness(1.2); /* Значение становится чуть ярче */
+}
