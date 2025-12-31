@@ -1,4 +1,4 @@
-/* Основной контейнер */
+/* Базовые настройки */
 .rng-audit-container {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background: #FFFFFF;
@@ -6,206 +6,49 @@
     border-radius: 30px;
     border: 1px solid #E2E8F0;
     color: #0F172A;
-    max-width: 100%;
-    box-sizing: border-box;
+    max-width: 480px;
+    margin: 20px auto;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
 }
 
-/* Шапка */
-.rng-audit-header {
-    text-align: center;
-    margin-bottom: 25px;
-}
-.rng-audit-badge {
-    display: inline-block;
-    background: #F1F5F9;
-    color: #475569;
-    padding: 4px 12px;
-    border-radius: 8px;
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-.rng-audit-header h2 {
-    margin: 0;
-    font-size: 22px;
-    font-weight: 900;
-    color: #1E293B;
-}
+.rng-audit-header { text-align: center; margin-bottom: 25px; }
+.rng-audit-badge { display: inline-block; background: #F1F5F9; color: #475569; padding: 4px 12px; border-radius: 8px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+.rng-audit-header h2 { margin: 10px 0 0; font-size: 22px; font-weight: 900; color: #1E293B; }
 
-/* Сетка карточек (Volatility & Resistance) */
-.rng-audit-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-.rng-card {
-    padding: 15px;
-    border-radius: 20px;
-    text-align: center;
-    border: 1px solid;
-}
-.rng-card.volatility { background: #FFF7ED; border-color: #FFEDD5; }
-.rng-card.resistance { background: #F0F9FF; border-color: #E0F2FE; }
-
-.rng-card-label { font-size: 10px; font-weight: 800; text-transform: uppercase; }
-.volatility .rng-card-label { color: #9A3412; }
-.resistance .rng-card-label { color: #0369A1; }
-
-.rng-card-value { font-size: 18px; font-weight: 900; margin: 5px 0; }
-.volatility .rng-card-value { color: #EA580C; }
-.resistance .rng-card-value { color: #0284C7; }
-
-/* Прогресс-бары */
-.rng-progress-bg { height: 4px; border-radius: 2px; overflow: hidden; background: rgba(0,0,0,0.05); }
-.rng-progress-bar { height: 100%; }
-
-/* Блок математики */
-.rng-math-box {
-    background: white;
-    border: 1px solid #F1F5F9;
-    border-radius: 24px;
-    padding: 20px;
-    margin-bottom: 25px;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
-}
-.rng-math-box h3 {
-    margin: 0 0 15px 0;
-    font-size: 14px;
-    font-weight: 800;
-    color: #334155;
-    border-bottom: 1px solid #F1F5F9;
-    padding-bottom: 10px;
-}
-.rng-math-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-    font-size: 13px;
-}
-
-/* Заметка (Autopsy) */
-.rng-autopsy-note {
-    background: #FAFAF9;
-    padding: 20px;
-    border-radius: 20px;
-    border: 1px dashed #D6D3D1;
-    position: relative;
-}
-.rng-autopsy-badge {
-    position: absolute;
-    top: -10px;
-    left: 20px;
-    background: #78716C;
-    color: white;
-    padding: 2px 10px;
-    border-radius: 4px;
-    font-size: 9px;
-    font-weight: 800;
-}
-.rng-autopsy-text {
-    margin: 0;
-    font-size: 13px;
-    color: #44403C;
-    font-style: italic;
-    line-height: 1.6;
-}
-
-/* Кнопка */
-.rng-audit-btn {
-    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
-    color: white;
-    padding: 16px;
-    border-radius: 16px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 14px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    cursor: pointer;
-    margin-top: 25px;
-}
-
-/* Мобильная адаптация */
-@media (max-width: 480px) {
-    .rng-audit-grid { grid-template-columns: 1fr; }
-}
-
+/* КРУГОВАЯ ДИАГРАММА — Исправленная версия */
 .audit-circle-stat {
-    width: 100px;
-    height: 100px;
+    --p: 0; /* процент */
+    --c: #0284c7; /* цвет */
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
-    background: conic-gradient(var(--circle-color) var(--percent), #f1f5f9 0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-}
-.audit-circle-stat::after {
-    content: attr(data-val);
-    width: 80px;
-    height: 80px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-}
-
-.responsive-table-v1 {
-    width: 100%;
-    border-collapse: collapse;
-}
-.responsive-table-v1 td {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-}
-@media (max-width: 600px) {
-    .responsive-table-v1 tr { display: block; margin-bottom: 10px; border: 1px solid #eee; }
-    .responsive-table-v1 td { display: flex; justify-content: space-between; }
-}
-
-/* Круговая диаграмма */
-.audit-circle-stat {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    /* Используем градиент для отрисовки процента */
-    background: conic-gradient(var(--circle-color) calc(var(--percent) * 1%), #f1f5f9 0);
+    /* Теперь работает через простую переменную --p */
+    background: conic-gradient(var(--c) calc(var(--p) * 1%), #f1f5f9 0);
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 20px auto;
     position: relative;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .audit-circle-stat::after {
     content: attr(data-val);
-    width: 95px;
-    height: 95px;
+    width: 100px;
+    height: 100px;
     background: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 900;
-    font-size: 18px;
+    font-size: 20px;
     color: #1e293b;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-.circle-legend {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 10px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
+.circle-legend { display: flex; justify-content: center; gap: 15px; margin-top: 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+
+/* Доп блоки */
+.rng-math-box { background: #f8fafc; border-radius: 20px; padding: 15px; margin: 20px 0; border: 1px solid #f1f5f9; }
+.rng-math-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; }
+.rng-autopsy-note { background: #fafaf9; padding: 15px; border-radius: 15px; border: 1px dashed #d6d3d1; font-size: 13px; font-style: italic; }
