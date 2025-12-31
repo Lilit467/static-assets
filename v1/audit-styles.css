@@ -1,117 +1,176 @@
-/* Оригинальные анимации из вашего файла */
-@keyframes slideIn { 
-    from { width: 0; } 
-    to { width: var(--target-width); } 
-} [cite: 5]
-
-@keyframes slideInRow {
-    from { opacity: 0; transform: translateX(-10px); }
-    to { opacity: 1; transform: translateX(0); }
-} [cite: 6]
-
-/* Универсальная сетка (верхние карточки) */
-.audit-grid {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 15px !important;
-    margin-bottom: 25px !important; [cite: 1, 2]
+/* ============================================================
+   1. БАЗОВЫЕ СТИЛИ (Общий каркас для всех таблиц)
+   ============================================================ */
+.rng-audit-container {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #FFFFFF;
+    padding: 25px;
+    border-radius: 30px;
+    border: 1px solid #E2E8F0;
+    color: #0F172A;
+    max-width: 500px;
+    margin: 20px auto;
+    box-sizing: border-box;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-/* Стили для контейнеров и шкал */
-.indicator-box {
-    padding: 15px !important;
-    border-radius: 20px !important;
-    text-align: center !important;
-    border: 1px solid rgba(0,0,0,0.05) !important; [cite: 2, 3]
+.rng-audit-container:hover {
+    transform: translateY(-5px);
 }
 
-.progress-bar { 
-    height: 6px !important;
-    background: rgba(0,0,0,0.05) !important; 
-    border-radius: 10px !important; 
-    overflow: hidden !important; 
-    margin-top: 8px; [cite: 4]
+.rng-audit-header { text-align: center; margin-bottom: 20px; }
+.rng-audit-header h2 {
+    margin: 12px 0 0;
+    font-size: 20px;
+    font-weight: 900;
+    color: #1E293B;
 }
 
-.progress-fill { 
-    height: 100% !important; 
-    width: 0;
-    animation: slideIn 1.5s ease-out forwards !important; [cite: 6]
+.rng-audit-badge {
+    display: inline-block;
+    background: #F1F5F9;
+    color: #475569;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-/* Кнопка с эффектом наведения */
-.audit-btn {
-    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%) !important;
-    color: white !important;
-    padding: 16px !important;
-    border-radius: 16px !important;
-    text-align: center !important;
-    font-weight: 900 !important;
-    text-transform: uppercase !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-    border: none;
-    width: 100%; [cite: 7, 8]
-}
-
-.audit-btn:hover { filter: brightness(1.3) !important; transform: scale(1.02); }
-
-/* Ваши предыдущие стили для строк */
-.rng-audit-container.fluffy-theme {
+/* ============================================================
+   2. ТЕМА "FLUFFY" (Яркий игровой стиль)
+   ============================================================ */
+.fluffy-theme {
     background: linear-gradient(180deg, #BAE6FD 0%, #FFFFFF 100%) !important;
     border: 3px solid #84cc16 !important;
-    padding: 25px !important;
-    border-radius: 25px !important;
+    box-shadow: 0 15px 30px rgba(132, 204, 22, 0.15) !important;
 }
 
-.rng-math-box {
-    background: rgba(255,255,255,0.85) !important;
+.fluffy-theme .rng-audit-header h2 {
+    color: #0369a1 !important;
+    font-size: 26px !important;
+    text-transform: uppercase !important;
+    text-shadow: 1px 1px 0px white;
+}
+
+.fluffy-theme .rng-audit-badge {
+    background: #fdf2f8 !important;
+    color: #db2777 !important;
+    border: 1px solid #fbcfe8 !important;
+}
+
+/* Математический блок в теме Fluffy */
+.fluffy-theme .rng-math-box {
+    background: rgba(255, 255, 255, 0.85) !important;
     border: 2px solid #84cc16 !important;
-    padding: 20px !important;
     border-radius: 15px !important;
-    overflow: hidden !important;
+    padding: 20px !important;
+    margin-top: 20px !important;
 }
 
-.rng-math-row {
-    display: block !important;
+.fluffy-theme .rng-math-row {
+    display: block !important; /* Каждая метрика на новой строке */
     margin-bottom: 15px !important;
     border-bottom: 1px solid #bae6fd !important;
     padding-bottom: 10px !important;
-    animation: slideInRow 0.8s ease-out forwards !important;
-    opacity: 0;
+    transition: all 0.2s ease !important;
 }
 
-/* Эффект для всей таблицы (контейнера) */
-.rng-audit-container:hover {
-    transform: translateY(-2px);
-    transition: transform 0.3s ease !important;
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.15) !important;
+.fluffy-theme .rng-math-row:hover {
+    background: rgba(255, 255, 255, 0.5);
+    padding-left: 10px;
+    border-bottom-color: #ec4899 !important;
 }
 
-/* Эффект для строк текстовой таблицы */
-.rng-math-row {
-    transition: all 0.3s ease !important; /* Плавный переход */
-    cursor: default;
+/* Цвета значений в теме Fluffy */
+.fluffy-theme .metric-name { font-weight: 900; color: #0369a1; text-transform: uppercase; display: block; }
+.fluffy-theme .val-high { color: #ea580c !important; font-weight: 800; }
+.fluffy-theme .val-dry { color: #be185d !important; font-weight: 800; }
+.fluffy-theme .val-feat { color: #0284c7 !important; font-weight: 800; }
+.fluffy-theme .val-rtp { color: #16a34a !important; font-weight: 800; }
+
+/* ============================================================
+   3. ГРАФИКИ И ИНДИКАТОРЫ (Для всех тем)
+   ============================================================ */
+
+/* Сетка (2 колонки) */
+.audit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
 }
 
-.rng-math-row:hover {
-    background: rgba(186, 230, 253, 0.2); /* Легкая подсветка цветом #bae6fd */
-    padding-left: 10px !important; /* Сдвиг вправо при наведении */
-    border-radius: 8px;
-}
-
-/* Эффект для карточек в сетке (диаграммы) */
+/* Квадратные карточки индикаторов */
 .indicator-box {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; 
+    padding: 15px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.3s ease !important;
+}
+.indicator-box:hover { transform: scale(1.05); }
+.indicator-box.orange { background: #FFF7ED; border-color: #FFEDD5; }
+.indicator-box.blue { background: #F0F9FF; border-color: #E0F2FE; }
+
+.indicator-title { font-size: 10px; font-weight: 900; text-transform: uppercase; margin-bottom: 5px; }
+.indicator-val { font-size: 18px; font-weight: 900; margin-bottom: 8px; }
+
+/* Прогресс-бары */
+.progress-bar { height: 6px; background: rgba(0,0,0,0.05); border-radius: 10px; overflow: hidden; }
+.progress-fill { 
+    height: 100%; 
+    width: 0; 
+    transition: width 1.5s ease-in-out; 
 }
 
-.indicator-box:hover {
-    transform: scale(1.05) !important; /* Увеличение как у кнопки */ 
-    filter: brightness(1.05) !important; 
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+/* Столбчатый график (CSS Animated) */
+.bar-chart-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: flex-end;
+    height: 150px;
+    gap: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    position: relative;
 }
 
-/* Эффект "пульсации" для прогресс-бара при наведении на строку */
-.rng-math-row:hover .progress-fill {
-    filter: brightness(1.2);
+.bar {
+    width: 100%;
+    background: #94a3b8;
+    border-radius: 4px 4px 0 0;
+    transition: background 0.3s ease;
+}
+
+.bar:hover { background: #0284c7 !important; }
+
+@keyframes bar-fill {
+    from { height: 0; }
+    to { height: var(--bar-height); }
+}
+
+.bar.animated {
+    animation: bar-fill 0.8s ease-out forwards;
+}
+
+/* Кнопка */
+.audit-btn {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    color: white !important;
+    padding: 16px;
+    border-radius: 16px;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    width: 100%;
+}
+
+.audit-btn:hover {
+    filter: brightness(1.3);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
