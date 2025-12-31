@@ -1,35 +1,14 @@
-/* Базовые настройки */
-.rng-audit-container {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background: #FFFFFF;
-    padding: 25px;
-    border-radius: 30px;
-    border: 1px solid #E2E8F0;
-    color: #0F172A;
-    max-width: 480px;
-    margin: 20px auto;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-}
-
-.rng-audit-header { text-align: center; margin-bottom: 25px; }
-.rng-audit-badge { display: inline-block; background: #F1F5F9; color: #475569; padding: 4px 12px; border-radius: 8px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
-.rng-audit-header h2 { margin: 10px 0 0; font-size: 22px; font-weight: 900; color: #1E293B; }
-
-/* КРУГОВАЯ ДИАГРАММА — Исправленная версия */
 .audit-circle-stat {
-    --p: 0; /* процент */
-    --c: #0284c7; /* цвет */
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    /* Теперь работает через простую переменную --p */
-    background: conic-gradient(var(--c) calc(var(--p) * 1%), #f1f5f9 0);
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 20px auto;
     position: relative;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    /* Цвет фона будем передавать прямо в HTML */
 }
 
 .audit-circle-stat::after {
@@ -45,10 +24,3 @@
     font-size: 20px;
     color: #1e293b;
 }
-
-.circle-legend { display: flex; justify-content: center; gap: 15px; margin-top: 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
-
-/* Доп блоки */
-.rng-math-box { background: #f8fafc; border-radius: 20px; padding: 15px; margin: 20px 0; border: 1px solid #f1f5f9; }
-.rng-math-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; }
-.rng-autopsy-note { background: #fafaf9; padding: 15px; border-radius: 15px; border: 1px dashed #d6d3d1; font-size: 13px; font-style: italic; }
