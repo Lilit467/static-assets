@@ -80,3 +80,38 @@
     animation: slideInRow 0.8s ease-out forwards !important;
     opacity: 0;
 }
+
+/* Эффект для всей таблицы (контейнера) */
+.rng-audit-container:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease !important;
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Эффект для строк текстовой таблицы */
+.rng-math-row {
+    transition: all 0.3s ease !important; /* Плавный переход */
+    cursor: default;
+}
+
+.rng-math-row:hover {
+    background: rgba(186, 230, 253, 0.2); /* Легкая подсветка цветом #bae6fd */
+    padding-left: 10px !important; /* Сдвиг вправо при наведении */
+    border-radius: 8px;
+}
+
+/* Эффект для карточек в сетке (диаграммы) */
+.indicator-box {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; 
+}
+
+.indicator-box:hover {
+    transform: scale(1.05) !important; /* Увеличение как у кнопки */ 
+    filter: brightness(1.05) !important; 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Эффект "пульсации" для прогресс-бара при наведении на строку */
+.rng-math-row:hover .progress-fill {
+    filter: brightness(1.2);
+}
