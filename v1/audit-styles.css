@@ -210,3 +210,58 @@
 .fluffy-theme .svg-bar:hover {
     fill: #a3e635; /* Салатовый при наведении */
 }
+
+/* Базовый контейнер темы Fluffy */
+.rng-audit-container.fluffy-theme {
+    background: linear-gradient(180deg, #BAE6FD 0%, #FFFFFF 100%) !important;
+    border: 3px solid #84cc16 !important;
+    padding: 25px !important;
+    border-radius: 25px !important;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Заголовок */
+.fluffy-theme .rng-audit-header h2 {
+    font-size: 26px !important;
+    font-weight: 900 !important;
+    color: #0369a1 !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+}
+
+/* Внутренний блок таблицы */
+.fluffy-theme .rng-math-box {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 2px solid #84cc16 !important;
+    padding: 20px !important;
+    border-radius: 15px !important;
+    margin-top: 20px !important;
+}
+
+/* Строки таблицы */
+.fluffy-theme .rng-math-row {
+    display: block !important;
+    margin-bottom: 15px !important;
+    border-bottom: 1px solid #bae6fd !important;
+    padding-bottom: 10px !important;
+}
+
+.fluffy-theme .rng-math-row:last-child {
+    border-bottom: none !important;
+}
+
+/* Названия метрик */
+.fluffy-theme .metric-name {
+    font-weight: 900 !important;
+    font-size: 13px !important;
+    color: #0369a1 !important;
+    text-transform: uppercase !important;
+    margin-bottom: 4px !important;
+    display: block;
+}
+
+/* Значения метрик (цвета под персонажей) */
+.fluffy-theme .val-high { color: #ea580c !important; font-weight: 800; } /* Оранжевый */
+.fluffy-theme .val-dry { color: #be185d !important; font-weight: 800; }  /* Розовый */
+.fluffy-theme .val-feat { color: #0284c7 !important; font-weight: 800; } /* Голубой */
+.fluffy-theme .val-rtp { color: #16a34a !important; font-weight: 800; }  /* Зеленый */
