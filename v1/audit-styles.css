@@ -87,3 +87,98 @@
     .rng-audit-container { padding: 15px; border-radius: 20px; }
     .rng-audit-header h2 { font-size: 18px; }
 }
+
+/* Столбчатый график */
+.bar-chart-container {
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 20px;
+    border: 1px solid #f1f5f9;
+    margin: 20px 0;
+}
+
+.bar-chart-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 столбцов */
+    align-items: flex-end; /* Столбцы начинаются снизу */
+    height: 150px; /* Высота графика */
+    gap: 10px;
+    padding-bottom: 20px;
+    position: relative;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.bar-chart-grid::before { /* Ось Y */
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #e2e8f0;
+}
+
+.bar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    height: 100%; /* Занимает всю высоту сетки */
+}
+
+.bar-value {
+    font-size: 11px;
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 5px;
+}
+
+.bar {
+    width: 100%;
+    background: #94a3b8; /* Базовый цвет столбца */
+    border-radius: 4px 4px 0 0;
+    transition: background 0.3s ease-out; /* Плавное изменение цвета */
+    position: relative;
+}
+
+.bar:hover {
+    background: #0284c7; /* Цвет при наведении */
+}
+
+/* Анимация подсветки при загрузке страницы */
+@keyframes bar-fill-animation {
+    from { height: 0; background: #94a3b8; }
+    to { height: var(--bar-height); background: #0284c7; }
+}
+
+.bar.animated {
+    animation: bar-fill-animation 0.8s ease-out forwards;
+    animation-delay: var(--bar-delay); /* Задержка для каждого столбца */
+}
+
+/* Подписи снизу */
+.bar-labels {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    font-size: 10px;
+    color: #64748b;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Ось Y - метки */
+.y-axis-labels {
+    position: absolute;
+    left: -25px; /* Смещение влево от графика */
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 9px;
+    color: #94a3b8;
+    font-weight: 600;
+}
